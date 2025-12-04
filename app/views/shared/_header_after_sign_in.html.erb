@@ -1,0 +1,25 @@
+<h3>Booking-Japan</h3>
+<nav>
+  <div class="header-icon">
+    <% if current_user.icon.attached? %>
+      <%= image_tag current_user.icon %>
+    <% else %>
+      <%= image_tag "default-avatar.png" %>
+    <% end %>
+  </div>
+
+  <div class="dropdown">
+    <span><%= current_user.name %></span>
+
+    <div class="dropdown-content">
+      <ul>
+        <li><%= link_to "サイトトップ", root_path %></li>
+        <li><%= link_to "施設の新規登録", new_room_path %></li>
+        <li><%= link_to "予約済み一覧", reservations_path %></li>
+        <li><%= link_to "登録済み一覧", rooms_own_path %></li>
+        <li><%= link_to "アカウント設定", users_account_path %></li>
+        <li><%= link_to "ログアウト", sign_out_path, data: { turbo_method: :delete } %></li>
+      </ul>
+    </div>
+  </div>
+</nav>

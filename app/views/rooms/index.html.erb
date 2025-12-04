@@ -1,0 +1,50 @@
+<h3>施設一覧</h3>
+
+<%= form_with url: rooms_path, method: :get, local: true do |f| %>
+  <div>
+    <%= f.label :area, "エリア名を入力" %>
+    <%= f.text_field :area, value: @area %>
+  </div>
+
+  <div>
+    <%= f.label :keyword, "キーワード名を入力" %>
+    <%= f.text_field :keyword, value: @keyword %>
+  </div>
+
+  <div>
+    <%= f.submit "検索" %>
+  </div>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>施設画像</th>
+      <th>施設名</th>
+      <th>住所</th>
+      <th>施設詳細</th>
+      <th>料金</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rooms.each do |room| %>
+      <tr>
+        <td><%= room.id %></td>
+        <td>
+          <% if room.image.attached? %>
+            <%= image_tag room.image, size: "150x150" %>
+          <% else %>
+            <%= image_tag "default-image.png", size: "150x150" %>
+          <% end %>
+        </td>
+        <td><%= room.name %></td>
+        <td><%= room.address %></td>
+        <td><%= room.introduction %></td>
+        <td><%= room.price_per_night %> 円</td>
+        <td><%= link_to "詳細はこちら", room %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

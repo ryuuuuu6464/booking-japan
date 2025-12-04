@@ -1,0 +1,26 @@
+<h1>設定</h1>
+<h3>アカウント</h3>
+
+<%= form_with model: @user, url: "/users/account", method: :patch do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :email , "メールアドレス" %></th>
+      <td><%= f.text_field :email %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password, "変更後パスワード" %></th>
+      <td><%= f.password_field :password %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :password_confirmation, "確認用パスワード" %></th>
+      <td><%= f.password_field :password_confirmation %></td>
+    </tr>
+  </table>
+
+  <div>
+    <ul>
+      <li><%= f.submit "保存" %></li>
+      <li><%= link_to "キャンセル", "/users/account" %></li>
+    </ul>
+  </div>
+<% end %>
