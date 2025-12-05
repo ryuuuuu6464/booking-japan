@@ -1,17 +1,23 @@
 <h1>アカウント設定</h1>
 
-<li><%= link_to "編集", users_account_edit_path %></li>
+<div class="users-nav">
+  <ul>
+    <li><%= link_to "アカウント設定", "/users/account" %></li>
+    <li><%= link_to "プロフィール設定", "/users/profile" %></li>
+  </ul>
+</div>
 
-<table>
-  <tr>
-    <th>メールアドレス</th>
-    <td><%= @user.email %></td>
-  </tr>
-  <tr>
-    <th>パスワード</th>
-    <td>********</td>
-  </tr>
-</table>
+<div class="users-main">
+  <li><%= link_to "編集", users_account_edit_path %></li>
 
-<li><%= link_to "アカウント", "/users/account" %></li>
-<li><%= link_to "プロフィール", "/users/profile" %></li>
+  <table>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= @user.email %></td>
+    </tr>
+    <tr>
+      <th>パスワード</th>
+      <td>********</td>
+    </tr>
+  </table>
+</div>

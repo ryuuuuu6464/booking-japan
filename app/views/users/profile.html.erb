@@ -1,27 +1,33 @@
 <h1>プロフィール設定</h1>
 
-<li><%= link_to "編集", users_profile_edit_path %></li>
+<div class="users-nav">
+  <ul>
+    <li><%= link_to "アカウント設定", "/users/account" %></li>
+    <li><%= link_to "プロフィール設定", "/users/profile" %></li>
+  </ul>
+</div>
 
-<table>
-  <tr>
-    <th>アイコン画像</th>
-    <td>
-      <% if @user.icon.attached? %>
-        <%= image_tag @user.icon, alt: "ユーザーアイコン", size: "150x150" %>
-      <% else %>
-        <%= image_tag "default-avatar.png", alt: "デフォルトアイコン", size: "150x150" %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th>名前</th>
-    <td><%= @user.name %></td>
-  </tr>
-  <tr>
-    <th>自己紹介</th>
-    <td><%= @user.introduction %></td>
-  </tr>
-</table>
+<div class="users-main">
+  <li><%= link_to "編集", users_profile_edit_path %></li>
 
-<li><%= link_to "アカウント", "/users/account" %></li>
-<li><%= link_to "プロフィール", "/users/profile" %></li>
+  <table>
+    <tr>
+      <th>アイコン画像</th>
+      <td>
+        <% if @user.icon.attached? %>
+          <%= image_tag @user.icon, alt: "ユーザーアイコン", size: "150x150" %>
+        <% else %>
+          <%= image_tag "default-avatar.png", alt: "デフォルトアイコン", size: "150x150" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>名前</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>自己紹介</th>
+      <td><%= @user.introduction %></td>
+    </tr>
+  </table>
+</div>

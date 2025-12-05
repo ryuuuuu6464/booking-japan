@@ -1,10 +1,11 @@
+
 <h3>Booking-Japan</h3>
 <nav>
   <div class="header-icon">
-    <% if current_user.icon.attached? %>
-      <%= image_tag current_user.icon %>
+    <% if current_user.icon.present? %>
+      <%= image_tag current_user.icon, class: "header-user-icon" %>
     <% else %>
-      <%= image_tag "default-avatar.png" %>
+      <%= image_tag "default-avatar.png", class: "header-user-icon" %>
     <% end %>
   </div>
 
@@ -23,3 +24,4 @@
     </div>
   </div>
 </nav>
+

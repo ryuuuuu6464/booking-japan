@@ -1,22 +1,24 @@
 <h3>施設一覧</h3>
 
-<%= form_with url: rooms_path, method: :get, local: true do |f| %>
-  <div>
-    <%= f.label :area, "エリア名を入力" %>
-    <%= f.text_field :area, value: @area %>
-  </div>
+<div class="roms-serch">
+  <%= form_with url: rooms_path, method: :get, local: true do |f| %>
+    <div>
+      <%= f.label :area, "エリア名を入力" %>
+      <%= f.text_field :area, value: @area %>
+    </div>
 
-  <div>
-    <%= f.label :keyword, "キーワード名を入力" %>
-    <%= f.text_field :keyword, value: @keyword %>
-  </div>
+    <div>
+      <%= f.label :keyword, "キーワード名を入力" %>
+      <%= f.text_field :keyword, value: @keyword %>
+    </div>
 
-  <div>
-    <%= f.submit "検索" %>
-  </div>
-<% end %>
+    <div>
+      <%= f.submit "検索" %>
+    </div>
+  <% end %>
+</div>
 
-<table>
+<table class="rooms-table">
   <thead>
     <tr>
       <th>id</th>
