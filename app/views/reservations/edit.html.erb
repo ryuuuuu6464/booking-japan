@@ -1,0 +1,47 @@
+<h3>再予約する</h3>
+
+<%= form_with model: @reservation do |f| %>
+  <table>
+    <tr>
+      <td>
+        <% if @reservation.room.image.attached? %>
+          <%= image_tag @reservation.room.image, size: "150x150" %>
+        <% else %>
+          <%= image_tag "default-image.png", size: "150x150" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>施設名</th>
+      <td><%= @reservation.room.name %></td>
+    </tr>
+    <tr>
+      <th>料金</th>
+      <td><%= @reservation.room.price_per_night %> 円</td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%= @reservation.room.address %></td>
+    </tr>
+    <tr>
+      <th>施設詳細</th>
+      <td><%= @reservation.room.introduction %></td>
+    </tr>
+  </table>
+
+  <%= f.hidden_field :room_id, value: @reservation.room.id %>
+  <%= f.label :check_in, "チェックイン *" %>
+  <%= f.date_field :check_in %>
+  <%= f.label :check_out, "チェックアウト *" %>
+  <%= f.date_field :check_out %>
+  <%= f.label :guest_count, "人数 *" %>
+  <%= f.number_field :guest_count %>
+
+  <div>
+    <ul>
+      <li><%= f.submit "再予約する" %></li>
+      <li><%= link_to "キャンセル", reservations_path %></li>
+    </ul>
+  </div>
+<% end %>
+

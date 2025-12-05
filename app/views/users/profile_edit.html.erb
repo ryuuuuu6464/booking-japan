@@ -1,0 +1,33 @@
+<h1>設定</h1>
+<h3>プロフィール</h3>
+
+<%= form_with model: @user, url: "/users/profile", method: :patch, local: true, html: { multipart: true } do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :icon , "アイコン画像" %></th>
+      <td>
+        <% if @user.icon.attached? %>
+          <%= image_tag @user.icon, alt: "ユーザーアイコン", size: "150x150" %>
+        <% else %>
+          <%= image_tag "default-avatar.png", alt: "デフォルトアイコン", size: "150x150" %>
+        <% end %>
+        <%= f.file_field :icon %>
+      </td>
+    </tr>
+    <tr>
+      <th><%= f.label :name, "名前" %></th>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :introduction, "自己紹介" %></th>
+      <td><%= f.text_area :introduction %></td>
+    </tr>
+  </table>
+
+  <div>
+    <ul>
+      <li><%= f.submit "保存" %></li>
+      <li><%= link_to "キャンセル", "/users/profile" %></li>
+    </ul>
+  </div>
+<% end %>

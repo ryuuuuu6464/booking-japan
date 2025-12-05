@@ -1,0 +1,37 @@
+<h3>予約内容の確認</h3>
+
+<%= form_with model: @reservation, url: reservations_path, data: { turbo: false } do |f| %>
+
+<table>
+  <tr>
+    <th>チェックイン</th>
+    <td><%= @reservation.check_in %></td>
+  </tr>
+  <tr>
+    <th>チェックアウト</th>
+    <td><%= @reservation.check_out %></td>
+  </tr>
+  <tr>
+    <th>日数</th>
+    <td><%= @reservation.nights %> 泊</td>
+  </tr>
+  <tr>
+    <th>人数</th>
+    <td><%= @reservation.guest_count %> 人</td>
+  </tr>
+  <tr>
+    <th>合計金額</th>
+    <td><%= @reservation.total_price %> 円</td>
+  </tr>
+</table>
+
+<p>上記の内容で正しければ「確定」ボタンを押してください。</p>
+
+<%= f.hidden_field :room_id %>
+<%= f.hidden_field :check_in %>
+<%= f.hidden_field :check_out %>
+<%= f.hidden_field :guest_count %>
+
+<%= f.submit "予約を確定" %>
+<% end %>
+<%= link_to "キャンセル", reservations_path %>

@@ -1,0 +1,46 @@
+<div>
+  <ul>
+    <li><%= link_to "戻る", request.referer %></li>
+  </ul>
+</div>
+
+<table>
+  <tr>
+    <th>施設名</th>
+    <td><%= @room.name %></td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td><%= @room.price_per_night %> 円</td>
+  </tr>
+  <tr>
+    <th>住所</th>
+    <td><%= @room.address %></td>
+  </tr>
+  <tr>
+    <th>施設詳細</th>
+    <td><%= @room.introduction %></td>
+  </tr>
+  <tr>
+    <td>
+      <% if @room.image.present? %>
+        <%= image_tag @room.image, size: "150x150" %>
+      <% else %>
+        <%= image_tag "default-image.png", size: "150x150" %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+
+<%= form_with model: @reservation, url: confirm_reservations_path, data: { turbo: false }  do |f| %>
+
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.label :check_in, "チェックイン *" %>
+  <%= f.date_field :check_in %>
+  <%= f.label :check_out, "チェックアウト *" %>
+  <%= f.date_field :check_out %>
+  <%= f.label :guest_count, "人数 *" %>
+  <%= f.number_field :guest_count %>
+
+  <%= f.submit "予約する" %>
+<% end %>

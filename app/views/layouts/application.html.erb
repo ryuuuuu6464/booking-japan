@@ -18,6 +18,18 @@
   </head>
 
   <body>
+    <header>
+      <% if signed_in? %>
+        <%= render "shared/header_after_sign_in" %>
+      <% else %>
+        <%= render "shared/header_before_sign_in" %>
+      <% end %>
+    </header>
+    <main>
     <%= yield %>
+    </main>
+    <footer>
+      <h3>Booking-Japan</h3>
+    </footer>
   </body>
 </html>
